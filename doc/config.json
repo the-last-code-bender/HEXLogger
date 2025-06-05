@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Config_1",
+    "baudrate": 9600,
+    "stopbits": 1,
+    "bytesize": 8,
+    "parity": "N",
+    "xonxoff": false,
+    "rtscts": false
+  },
+  {
+    "name": "Config_2",
+    "baudrate": 115200,
+    "stopbits": 1,
+    "bytesize": 8,
+    "parity": "N",
+    "xonxoff": false,
+    "rtscts": false
+  },
+  {
+    "name": "Config_3",
+    "baudrate": 921600,
+    "stopbits": 1,
+    "bytesize": 8,
+    "parity": "N",
+    "xonxoff": false,
+    "rtscts": false
+  } 
+]
