@@ -19,6 +19,7 @@ def select_serial_port():
     ports = list_serial_ports()
     if not ports:
         print("No serial ports found.")
+        input("Press any key to continue...")
         sys.exit(1)
 
     print("Available serial ports:")
@@ -110,9 +111,9 @@ def prompt_for_config():
     print(json.dumps(cfg, indent=4))
     return cfg
 
-def get_output_filename():
+def get_output_filename(config):
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    return f"output_{now}.bin"
+    return f"output_{config.get("name", "Unnamed")}_{now}.bin"
 
 def start_logging(ser, output_file, stop_flag):
     total_bytes = 0
@@ -141,7 +142,7 @@ def main():
  / __  / / /____ /   |/ /___/ /_/ / /_/ / /_/ /  __/ /    
 /_/ /_(_)_____(_)_/|_/_____/\____/\__, /\__, /\___/_/     
                                  /____//____/                    
-v1.0.0 - Serial Port Data Logger
+v1.1.0 - Serial Port Data Logger
 Created by Husamettin Eken
     """
     print(asciart)
@@ -162,11 +163,12 @@ Created by Husamettin Eken
             rtscts=config["rtscts"],
             timeout=0.1
         )
+        ser.set_buffer_size(rx_size = 61440, tx_size = 61440)
     except Exception as e:
         print(f"Failed to open serial port: {e}")
         return
 
-    output_file = get_output_filename()
+    output_file = get_output_filename(config)
     print(f"Recording to: {output_file}")
 
     stop_flag = {"stop": False}
