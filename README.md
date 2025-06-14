@@ -9,11 +9,11 @@ This tool allows users to record raw binary data from a selected serial port to 
 ## 🔧 Features
 
 - Lists and selects available serial ports
-- Supports multiple saved configuration presets (`config.json`)
+- Supports multiple saved configuration presets (`config_HEXLogger.json`)
 - Manual serial configuration mode
 - Option to enable **automatic start/stop logging** based on data timeout
 - Option to include a **counter in output filename** for auto-split mode
-- Saves data to `ConfigName_001_YYYY_MM_DD_HH_MM_SS.bin` (if counter enabled) or `ConfigName_YYYY_MM_DD_HH_MM_SS.bin`
+- Saves data to `ConfigName-YYYY_MM_DD_HH_MM_SS-Data1.bin` (if counter enabled) or `ConfigName-YYYY_MM_DD_HH_MM_SS.bin`
 - **Waits for first data** before starting timeout tracking (improved auto-split behavior)
 - Real-time byte count display
 - Clean and minimal terminal UI

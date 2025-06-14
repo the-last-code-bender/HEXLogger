@@ -2,7 +2,7 @@ import serial, json,  os, sys, threading, time, shutil, colorama
 import serial.tools.list_ports
 from datetime import datetime
 
-CONFIG_FILE = "config.json"
+CONFIG_FILE = "config_HEXLogger.json"
 
 def clear_lines(n):
     for _ in range(n):
@@ -19,7 +19,7 @@ def select_serial_port():
     ports = list_serial_ports()
     if not ports:
         print("No serial ports found.")
-        input("Press any key to continue...")
+        input("Press Enter to exit...")
         sys.exit(1)
 
     print("Available serial ports:")
@@ -40,7 +40,7 @@ def select_serial_port():
 
 def load_config():
     if not os.path.exists(CONFIG_FILE):
-        print("No config file found in directory. -config.json")
+        print("No config file found in directory. - config_HEXLogger.json")
         configfileformat = r"""
     Expected config file format:
         [{
@@ -114,7 +114,7 @@ def prompt_for_config():
 def get_output_filename(config,file_count=""):
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     base_name = config.get("name", "Unnamed").replace(" ", "_")
-    return f"{base_name}{file_count}_{now}.bin"
+    return f"{base_name}-{now}{file_count}.bin"
 
 def start_logging(ser, config, stop_flag, auto_split=False, timeout_seconds=None, use_auto_cnt=False):
     total_bytes = 0
@@ -123,7 +123,7 @@ def start_logging(ser, config, stop_flag, auto_split=False, timeout_seconds=None
 
     def get_new_file():
         if use_auto_cnt:
-            filename = get_output_filename(config, f"_{file_count}")
+            filename = get_output_filename(config, f"-Data{file_count}")
         else:
             filename = get_output_filename(config, "")
         f = open(filename, 'wb')
@@ -167,7 +167,7 @@ def main():
  / __  / / /____ /   |/ /___/ /_/ / /_/ / /_/ /  __/ /    
 /_/ /_(_)_____(_)_/|_/_____/\____/\__, /\__, /\___/_/     
                                  /____//____/                    
-v2.0.0 - Serial Port Data Logger
+v2.1.0 - Serial Port Data Logger
 Created by Husamettin Eken
     """
     print(asciart)

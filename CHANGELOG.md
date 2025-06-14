@@ -1,4 +1,12 @@
-# 📜 `CHANGELOG`  
+# 📜 `CHANGELOG` 
+
+```markdown
+## [v2.1.0] - 2025-06-14
+### Changed
+- Changed countered data format to `ConfigName-YYYY_MM_DD_HH_MM_SS-Data1.bin`  
+- Changed config file name to `config_HEXLogger.json`
+```
+
 ```markdown
 ## [v2.0.0] - 2025-06-13
 ### Added
