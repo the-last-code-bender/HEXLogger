@@ -1,6 +1,12 @@
 # 📜 `CHANGELOG` 
 
 ```markdown
+## [v2.1.0_X] - 2025-06-14
+### Added
+- Added additional HEXArchiver app that organize files
+```
+
+```markdown
 ## [v2.1.0] - 2025-06-14
 ### Changed
 - Changed countered data format to `ConfigName-YYYY_MM_DD_HH_MM_SS-Data1.bin`  
